@@ -1,3 +1,4 @@
+// constants
 const BASE = "https://fsa-crud-2aa9294fe819.herokuapp.com/api";
 const COHORT = "/2507-Andre"; // Make sure to change this!
 const RESOURCE = "/events";
@@ -24,7 +25,6 @@ async function getParty(id) {
     const response = await fetch(API + "/" + id);
     const result = await response.json();
     party = result.data;
-    render();
   } catch (error) {
     console.error(error);
   }
@@ -38,16 +38,16 @@ function partyListItem(parties) {
   $li.addEventListener("click", () => getParty(parties.id));
   return $li;
 }
-
+// list of parties
 function partyList() {
   const $ul = document.createElement("ul");
   $ul.classList.add("lineup");
 
-  const partyItem = party.map(partyListItem);
-  $ul.replaceChildren(...partyItem);
+  const $partyItem = party.map(partyListItem);
+  $ul.replaceChildren(...$partyItem);
   return $ul;
 }
-
+// details about clicked party
 function partyDetails() {
   if (!selectedParty) {
     const $p = document.createElement("p");
@@ -67,7 +67,7 @@ function render() {
     </section>
     <section id="selected">
     <h2>Party Details</h2>
-        <partyDetails"></partyDetails>
+        <partyDetails></partyDetails>
     </section>
     </main> 
   `;
