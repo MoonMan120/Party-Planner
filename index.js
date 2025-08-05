@@ -23,7 +23,7 @@ async function getParty(id) {
   try {
     const response = await fetch(API + "/" + id);
     const result = await response.json();
-    selectedParty = result.data;
+    party = result.data;
     render();
   } catch (error) {
     console.error(error);
@@ -33,9 +33,9 @@ async function getParty(id) {
 function partyListItem(parties) {
   const $li = document.createElement("li");
   $li.innerHTML = `
-    <a href="#selected">${party.name}</a>
+    <a href="#selected">${parties.name}</a>
   `;
-  $li.addEventListener("click", () => getParty(party.id));
+  $li.addEventListener("click", () => getParty(parties.id));
   return $li;
 }
 
