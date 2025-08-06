@@ -54,6 +54,15 @@ function partyDetails() {
     $p.textContent = "Select a party to learn more.";
     return $p;
   }
+
+  const $parties = document.createElement("section");
+  $parties.innerHTML = `
+  <h4>${selectedParty.name} #${selectedParty.id}</h4>
+    <p>${selectedParty.description}</p>
+  <date>${selectedParty.date}<date>
+  <address>${selectedParty.location}</address>
+  `;
+  return $parties;
 }
 
 function render() {
